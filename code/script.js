@@ -137,5 +137,53 @@ var commitCompleto = unique(commitment);
       return vars;
   }
 
+  // Página de Detalhe das vagas
+  function getUrlVars()
+      {
+          var vars = [], hash;
+          var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+          for(var i = 0; i < hashes.length; i++)
+          {
+              hash = hashes[i].split('=');
+              vars.push(hash[0]);
+              vars[hash[0]] = hash[1];
+          }
+          return vars;
+      }  
+    
+      var vagaId = getUrlVars()["vagaid"];
+      var items = '';
+      var jsonUrl = "https://api.lever.co/v0/postings/99taxis/" + vagaId;
+
+      $.getJSON( jsonUrl, function( data ) {
+        
+        $.each( data, function( key, val ) {
+          if(typeof val =='object')
+          {
+            $.each( val, function( key, val ) {
+              if(typeof val =='object')
+              { 
+                //detalhamento da vaga
+                $.each( val, function( key, val ) {
+                  items +=  "<li>" + val + "</li>" ;
+                })
+              } 
+              else {
+                // categoria da vaga (team,location,commit)
+                 items +=  "<li>" + val + "</li>";
+               }
+            })
+          } 
+          else {
+              items +=  "<li>" + val + "</li>";
+          }
+        }); 
+
+        $('#conteudovaga').append(items);
+      });
+
+      //
+      
+
 });
  
