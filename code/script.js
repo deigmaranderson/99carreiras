@@ -77,11 +77,11 @@ var teamsCompleto = unique(teams);
        
           }); 
 
-        $('#times_filter').append(htm);
-        $('#times_filter').multiselect('rebuild');         
+        $('#times_filter').append(htm);                
         $('#times_filter').multiselect({
             includeSelectAllOption: true
         });
+        $('#times_filter').multiselect('rebuild'); 
 
 var htm = '';
 var citiesCompleto = unique(cities);
@@ -91,11 +91,11 @@ var citiesCompleto = unique(cities);
                     
           });
         $('#local_filter').append(htm);
-        $('#local_filter').multiselect('rebuild');         
         $('#local_filter').multiselect({
             includeSelectAllOption: true
         });
-
+        $('#local_filter').multiselect('rebuild');        
+        
 var htm = '';
 var commitCompleto = unique(commitment);
  
@@ -104,10 +104,11 @@ var commitCompleto = unique(commitment);
                     
           });
         $('#tipo_filter').append(htm);
-        $('#tipo_filter').multiselect('rebuild');         
         $('#tipo_filter').multiselect({
             includeSelectAllOption: true
         });
+        $('#tipo_filter').multiselect('rebuild');         
+        
  
   FJS.addCriteria({field: 'categories.team', ele: '#times_filter'});
   FJS.addCriteria({field: 'categories.location', ele: '#local_filter'});
@@ -123,6 +124,18 @@ var commitCompleto = unique(commitment);
       return result;
   }
 
+  function getUrlVars()
+  {
+      var vars = [], hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++)
+      {
+          hash = hashes[i].split('=');
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+      }
+      return vars;
+  }
 
 });
  
