@@ -3,6 +3,7 @@ $(function(){
  var teams = new Array();
  var cities = new Array();
  var commitment = new Array();
+ var quantidadeVagas = {};
 
  var afterFilter = function(result, jQ){
 
@@ -29,7 +30,18 @@ $(function(){
 
        });
 
+    }); 
+
+    // cria objeto com quantidade de vagas
+    $.each(teams, function(key,value) {
+      if (!quantidadeVagas.hasOwnProperty(value)) {
+        quantidadeVagas[value] = 1;
+      } else {
+        quantidadeVagas[value]++;
+      }
     });
+
+    //console.log(quantidadeVagas);
 
 /*
     checkboxes.each(function(){
@@ -68,10 +80,25 @@ $(function(){
 
 //array teams completo sem duplicados
 //console.log(unique(teams));
+
  
+var htm = '';  
+      $.each(quantidadeVagas, function( key, value ) { 
+          
+          htm += "<div class='col-md-4'>";
+          htm += "<div class='thumbnail totalvagasteams'>";   
+          htm += "<div>" + key + "</div><div>"+value+"</div>";
+          htm += "</div>";
+          htm += "</div>";
+          }); 
+
+        $('.totalvagasteams').append(htm);                
+         
+
+
 var htm = '';
 var teamsCompleto = unique(teams);
- 
+//console.log(teamsCompleto);
       $.each(teamsCompleto, function( key, value ) { 
           htm += "<option value='" + value + "' class='' selected='selected'>"+value+"</option>";
        
@@ -124,66 +151,6 @@ var commitCompleto = unique(commitment);
       return result;
   }
 
-  function getUrlVars()
-  {
-      var vars = [], hash;
-      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-      for(var i = 0; i < hashes.length; i++)
-      {
-          hash = hashes[i].split('=');
-          vars.push(hash[0]);
-          vars[hash[0]] = hash[1];
-      }
-      return vars;
-  }
-
-  // Página de Detalhe das vagas
-  function getUrlVars()
-      {
-          var vars = [], hash;
-          var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-          for(var i = 0; i < hashes.length; i++)
-          {
-              hash = hashes[i].split('=');
-              vars.push(hash[0]);
-              vars[hash[0]] = hash[1];
-          }
-          return vars;
-      }  
-    
-      var vagaId = getUrlVars()["vagaid"];
-      var items = '';
-      var jsonUrl = "https://api.lever.co/v0/postings/99taxis/" + vagaId;
-
-      $.getJSON( jsonUrl, function( data ) {
-        
-        $.each( data, function( key, val ) {
-          if(typeof val =='object')
-          {
-            $.each( val, function( key, val ) {
-              if(typeof val =='object')
-              { 
-                //detalhamento da vaga
-                $.each( val, function( key, val ) {
-                  items +=  "<li>" + val + "</li>" ;
-                })
-              } 
-              else {
-                // categoria da vaga (team,location,commit)
-                 items +=  "<li>" + val + "</li>";
-               }
-            })
-          } 
-          else {
-              items +=  "<li>" + val + "</li>";
-          }
-        }); 
-
-        $('#conteudovaga').append(items);
-      });
-
-      //
-      
 
 });
  
