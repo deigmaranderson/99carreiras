@@ -1,6 +1,6 @@
 body{
   /* background-color: #f5f5f5; */
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 }
 
 h4, dd, .checkbox label{
@@ -88,7 +88,7 @@ select:focus, textarea:focus, input:focus{
   color: #222;
   font-size: 25px;
   font-weight: 600;
-  width: 140px;
+  /*width: 140px;*/
 }
 
 .content{
@@ -263,4 +263,27 @@ select:focus, textarea:focus, input:focus{
 code{
   margin-top: 5px;
   font-size: 80%;
+}
+.navbar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.well { 
+  padding: 15px 0 0 0;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand 
+  .navbar-brand {
+    margin: -15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand 
+  .navbar-brand {
+    margin: -15px 0 !important;
+  }
 }

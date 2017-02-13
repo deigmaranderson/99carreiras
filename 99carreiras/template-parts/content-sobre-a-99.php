@@ -2,46 +2,13 @@
 /**
  * @package start
  */
-?>
-
+?> 
 <?php 
-
-$tag='';
-                        $teamSelecionado = urldecode($_GET["location"]);      
-                       // var_dump($teamSelecionado);                  
-                        switch ($teamSelecionado) {
-                             case 'São Paulo':
-                                $tag = 'sp';
-                                break; 
-                             case 'Rio de Janeiro':
-                                $tag = 'rj';
-                                break; 
-                             case 'Belo Horizonte':
-                                $tag = 'bh';
-                                break; 
-                             case 'Porto Alegre':
-                                $tag = 'pa';
-                                break; 
-                              
-                        }
-                        /*99 Corporativo
-99 Corporativo
-CSI – Controle de risco e fraudes
-DIA
-Finanças
-Growth
-Marketing
-Operações
-Policies & Communications
-Produto
-Projetos
-RH
-Tecnologia
-UAU! – Unidade de Atendimento aos Usuários*/
+      // background-color: rgb(245, 216, 42) !important;                 
                          
                         $args = array(
                           'post_type' => array('page'), 
-                          'tag' => $tag, 
+                          'tag' => 'sobre99',  
                           'post_status' => 'publish', 
                           'order' => 'DESC', 
                           'orderby' => 'date'
@@ -49,18 +16,18 @@ UAU! – Unidade de Atendimento aos Usuários*/
 
                         // WP_Query
                         $query = new WP_Query( $args );
-                            if ($query->have_posts()) : // The Loop
+                        if ($query->have_posts()) : // The Loop
                         ?>
-                           
+                        
+                                 
 
-                        <?php 
-                        while ($query->have_posts()): $query->the_post();
-                        ?>
-
+                                    <?php 
+                                    while ($query->have_posts()): $query->the_post();
+                                    ?> 
     
     <div id="scoped-content">
         <style>
-            .intro-header {  background: url(<?php the_post_thumbnail_url( 'full' );  ?>) no-repeat center center !important; }
+            .intro-header {  background: url(<?php the_post_thumbnail_url( 'full' );  ?>) no-repeat center center !important;  }
         </style>  
     </div>                  
     <div class="intro-header">
@@ -79,7 +46,7 @@ UAU! – Unidade de Atendimento aos Usuários*/
 
     </div>
     <!-- /.intro-header -->
-    <div class="content-section-a">
+    <div class="content-section-b">
 
             <div class="container">
                 <div class="row">
@@ -103,6 +70,3 @@ UAU! – Unidade de Atendimento aos Usuários*/
     </div>
     <!-- /.content-section-a -->
 
-<?php if(!$conteudoNaoExiste) { ?>
-<?php get_template_part( 'template-parts/content', 'integration' ); ?>
-<?php } ?>

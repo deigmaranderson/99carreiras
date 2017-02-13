@@ -4,6 +4,7 @@ jQuery(function(){
  var cities = new Array();
  var commitment = new Array();
  var quantidadeVagas = {};
+ var quantidadeVagasCidade = {};
  var categoriesFinal = new Array();
 
  var afterFilter = function(result, jQ){
@@ -42,7 +43,16 @@ jQuery(function(){
       }
     });
 
-    //console.log(quantidadeVagas);
+    // cria objeto com quantidade de vagas /cidade
+    jQuery.each(cities, function(key,value) {
+      if (!quantidadeVagasCidade.hasOwnProperty(value)) {
+        quantidadeVagasCidade[value] = 1;
+      } else {
+        quantidadeVagasCidade[value]++;
+      }
+    });
+
+    // console.log(quantidadeVagasCidade);
 
 /*
     checkboxes.each(function(){
@@ -119,6 +129,19 @@ var htm = '';
 
  if(jQuery('.totalvagasteams').length ){
             jQuery('.totalvagasteams').append(htm);   
+  } 
+
+var htm = ''; 
+jQuery.each(quantidadeVagasCidade, function( key, value ) {       
+      // console.log(comparaCategoria);  
+                  htm += "<div class='col-md-3 portfolio-item'>";
+                  htm += "<div class='clearfix'></div>";
+                  htm += "<a href='location?location="+key+"'><img class='img-responsive' src='"+extThemeurl.templateUrl+'/img/'+slug(key)+".png' alt=''></a>";    
+                  htm += "<h5><i>"+ ""+value+ " vagas</i> - "+key+"</h5>";
+                  htm += "</div>";  
+     });
+ if(jQuery('.blocoCidades').length ){
+            jQuery('.blocoCidades').append(htm);   
   } 
 
 var htm = '';

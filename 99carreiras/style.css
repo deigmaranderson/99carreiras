@@ -42,13 +42,19 @@ Use it to make something cool, have fun, and share what you've learned with othe
 # Normalize
 --------------------------------------------------------------*/
 html {
-	font-family: sans-serif;
+
+	font-family: "Open Sans","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	font-size: 16px;
+	line-height: 28px;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust:     100%;
+
 }
 
 body {
 	margin: 0;
+	font-size: 16px !important;
+	line-height: 28px;
 }
 
 article,
@@ -489,11 +495,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: #000000 !important;
 }
 
 a:visited {
-	color: purple;
+	color: #000000;
 }
 
 a:hover,

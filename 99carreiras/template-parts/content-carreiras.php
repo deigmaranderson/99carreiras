@@ -5,43 +5,11 @@
 ?>
 
 <?php 
-
-$tag='';
-                        $teamSelecionado = urldecode($_GET["location"]);      
-                       // var_dump($teamSelecionado);                  
-                        switch ($teamSelecionado) {
-                             case 'São Paulo':
-                                $tag = 'sp';
-                                break; 
-                             case 'Rio de Janeiro':
-                                $tag = 'rj';
-                                break; 
-                             case 'Belo Horizonte':
-                                $tag = 'bh';
-                                break; 
-                             case 'Porto Alegre':
-                                $tag = 'pa';
-                                break; 
-                              
-                        }
-                        /*99 Corporativo
-99 Corporativo
-CSI – Controle de risco e fraudes
-DIA
-Finanças
-Growth
-Marketing
-Operações
-Policies & Communications
-Produto
-Projetos
-RH
-Tecnologia
-UAU! – Unidade de Atendimento aos Usuários*/
+ 
                          
                         $args = array(
                           'post_type' => array('page'), 
-                          'tag' => $tag, 
+                          'tag' => 'carreiras', 
                           'post_status' => 'publish', 
                           'order' => 'DESC', 
                           'orderby' => 'date'
@@ -79,7 +47,7 @@ UAU! – Unidade de Atendimento aos Usuários*/
 
     </div>
     <!-- /.intro-header -->
-    <div class="content-section-a">
+    <div class="content-section-a" style="display:none;">
 
             <div class="container">
                 <div class="row">

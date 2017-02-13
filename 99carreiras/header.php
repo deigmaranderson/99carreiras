@@ -13,6 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<link rel="shortcut icon" type="image/png" href="<?php bloginfo( 'template_url' ); ?>/img/favicon.ico"/> 
+
+
 <?php wp_head(); ?>
 
  
@@ -22,8 +25,8 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
+    <nav class="navbar" role="navigation">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -33,7 +36,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<?php echo home_url(); ?>">
-                <?php bloginfo('name'); ?>
+                <?php //bloginfo('name'); ?>
+                <img src="<?php echo get_bloginfo('template_url') ?>/img/logo_99_48x48.png" alt="99" />
             </a>
     </div>
 
@@ -45,7 +49,7 @@
                 'container'         => 'div',
                 'container_class'   => 'collapse navbar-collapse',
         'container_id'      => 'bs-example-navbar-collapse-1',
-                'menu_class'        => 'nav navbar-nav',
+                'menu_class'        => 'nav navbar-nav navbar-right',
                 'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                 'walker'            => new wp_bootstrap_navwalker())
             );

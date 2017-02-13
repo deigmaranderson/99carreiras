@@ -3,7 +3,21 @@
  * @package start
  */
 ?>  
- 
+
+<?php
+    $homepage = (get_the_ID()=='5')?true:false;  
+?> 
+
+  <div class="container" <? if($homepage){?> style="display:none;" <?php }else{ ?>  style="display:block;" <?php } ?>>
+    <div class="row">
+       <div class="col-md-12">
+          <h1 class="title">Posições abertas</h1>
+       </div>
+    </div>
+  </div>
+
+
+
 <div class="content-section-b">
 
 
@@ -11,7 +25,7 @@
       <!--<h1 class="title">Carreiras</h1>-->
       
       <!--Só na home -->
-      <?php if ( is_home() ) { ?>
+      <?php if ( $homepage ) { ?>
         <div class="content col-md-12">
           <!--teams and vagas-->
           <div class="row">
@@ -21,7 +35,7 @@
       <?php } ?>
 
       <!--Não é a home -->
-      <div class="sidebar col-md-3" <? if(is_home()){?> style="display:none;" <?php }else{ ?>  style="display:block;" <?php } ?>>
+      <div class="sidebar col-md-3" <? if($homepage){?> style="display:none;" <?php }else{ ?>  style="display:block;" <?php } ?>>
    
         <div>
           <h4 class='col-md-6'>total (<span id="total_vagas99">0</span>)</h4>
@@ -63,7 +77,7 @@
     </div>
 
 <!-- /.col-md-3 -->
-    <div class="col-md-9" <? if(is_home()){?> style="display:none;" <?php }else{ ?>  style="display:block;" <?php } ?>>
+    <div class="col-md-9" <? if($homepage){?> style="display:none;" <?php }else{ ?>  style="display:block;" <?php } ?>>
       <div class="row">
         <div class="content col-md-12">
           <div id="pagination" class="vagas99-pagination col-md-9"></div>
@@ -73,29 +87,56 @@
         </div>
       </div>  
 
-      <div class="vagas99 row" id="vagas99"> </div>
+       
+        <div class="col-md-12 portfolio-item">
+            <div class="clearfix"></div>
+                    
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th data-field="text">Posição</th>
+                        <th data-field="team">Time</th>
+                        <th data-field="categories.location">Localização</th> 
+                    </tr>
+                </thead>
+                <tbody class="vagas99 row" id="vagas99">
+                   
+                </tbody>
+            </table>
+        </div> 
+      </div>
  
     </div>
 <!-- /.col-md-9 -->
-   </div>
+   
 </div>
 <!-- /.container -->
 
       <script id="vagas99-template" type="text/html">
 
-        <div class="col-md-4 portfolio-item">
-            <div class="clearfix"></div>
-                    
+         <!-- descriptionplan -> fala sobre a 99
+              text-> nome vaga (text-content)
+              lists -> topicos descrevendo a vaga
+              categories -> team, location, commit 
+              <%= _fid %>  -->
+        
+                      <tr>
+                          <td><a href="jobdetail/?vagaid=<%= id %>"><%= text %></a></h4></td>
+                          <td><%= categories.team %></td>
+                          <td><%= categories.location %></td>
+                          
+                      </tr>        
+                   
 
-                <a href="#">
+               <!--  <a href="#">
                     <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                 </a>
                 <h3>
                    <h4><a href="vaga.html?vagaid=<%= id %>"><%= _fid %> - <%= text %></a></h4>
                 </h3>
                 <h4><%= categories.team %></h4> 
-                <p><%= text %></p>
-        </div> 
+                <p><%= text %></p> -->
+       
       
       </script>
 
